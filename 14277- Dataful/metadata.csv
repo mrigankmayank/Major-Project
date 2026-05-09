@@ -1,0 +1,10 @@
+organisation,Health Management Information System
+sectors,"Health and Family Welfare"
+updated_frequency,Yearly
+granularity,"Yearly, State"
+time_saved,4 hours
+source,"Health Management Information System"
+source_link,"https://hmis.nhp.gov.in/"
+time_period,"2008-09 to 2021-22"
+units,"value in Absolute Number"
+citation,"Health Management Information System. District and Year-wise data related to all Health Indicators under Health Management Information System (HMIS) for Bihar [Data set]. Dataful. https://dataful.in/dataset/14277"

@@ -1,0 +1,26 @@
+{
+  "n_districts": 33,
+  "n_rows": 63,
+  "spatial_cv_splits": 5,
+  "best_model": "rf",
+  "cv_by_model": [
+    {
+      "model": "ridge",
+      "rmse_mean": 1.4963998402510368,
+      "mae_mean": 1.229140521242112,
+      "r2_mean": -0.4241229627750337
+    },
+    {
+      "model": "rf",
+      "rmse_mean": 1.494176201750766,
+      "mae_mean": 1.2516691459523668,
+      "r2_mean": -0.45033695903166693
+    },
+    {
+      "model": "xgb",
+      "rmse_mean": 1.6676568156259548,
+      "mae_mean": 1.3995609643291553,
+      "r2_mean": -0.7966777745282617
+    }
+  ]
+}

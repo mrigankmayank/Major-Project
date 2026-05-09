@@ -1,0 +1,259 @@
+Child Immunisation- PCV 1
+Child Immunisation- PCV 2
+Child Immunisation- PCV Booster
+Child immunisation (9-11months) - JE 1st dose
+Child immunisation (9-11months) - Measles & Rubella (MR)- 1st Dose
+Child immunisation (9-11months) - Measles & Rubella (MR)/ Measles containing vaccine(MCV) - 1st Dose
+Child immunisation (9-11months) - Measles 1st dose
+Child immunisation (after 12 months) - JE 1st dose
+Child immunisation (after 12 months) - Measles-1st dose
+Child immunisation - BCG
+Child immunisation - DPT 1st Booster
+Child immunisation - DPT1
+Child immunisation - DPT2
+Child immunisation - DPT3
+Child immunisation - Hepatitis-B0 (Birth Dose)
+Child immunisation - Hepatitis-B1
+Child immunisation - Hepatitis-B2
+Child immunisation - Hepatitis-B3
+Child immunisation - Inactivated Injectable Polio Vaccine 1 (IPV 1)
+Child immunisation - Inactivated Injectable Polio Vaccine 2 (IPV 2)
+Child immunisation - Inactivated Polio Vaccine 1 (IPV 1)
+Child immunisation - Inactivated Polio Vaccine 2 (IPV 2)
+Child immunisation - JE 1st dose
+Child immunisation - Measles & Rubella (MR)- 1st Dose
+Child immunisation - Measles & Rubella (MR)- 2nd Dose (16-24 months)
+Child immunisation - Measles 2nd dose (More than 16 months)
+Child immunisation - Measles, Mumps, Rubella (MMR) Vaccine
+Child immunisation - Measles-1st dose
+Child immunisation - OPV 0 (Birth Dose)
+Child immunisation - OPV Booster
+Child immunisation - OPV1
+Child immunisation - OPV2
+Child immunisation - OPV3
+Child immunisation - Pentavalent 1
+Child immunisation - Pentavalent 2
+Child immunisation - Pentavalent 3
+Child immunisation - Rotavirus 1
+Child immunisation - Rotavirus 2
+Child immunisation - Rotavirus 3
+Child immunisation - Typhoid
+Child immunisation - Vitamin A Dose - 1
+Child immunisation - Vitamin A Dose - 5
+Child immunisation - Vitamin A Dose - 9
+Child immunisation - Vitamin K (Birth Dose)
+Child immunisation - Vitamin K1 (Birth Dose)
+Child immunisation(9 - 11 months) - Inactivated Injectable Polio Vaccine 3 (IPV 3)
+Child immunisation(after 12 months) - Measles & Rubella (MR)/Measles containing vaccine(MCV)- 1st Dose
+Childhood Diseases - Acute Flaccid Paralysis(AFP)
+Childhood Diseases - Asthma
+Childhood Diseases - Diarrhoea
+Childhood Diseases - Diarrhoea treated in Inpatients
+Childhood Diseases - Diphtheria
+Childhood Diseases - Malaria
+Childhood Diseases - Measles
+Childhood Diseases - Pertussis
+Childhood Diseases - Pneumonia
+Childhood Diseases - Sepsis
+Childhood Diseases - Severe Acute Malnutrition (SAM)
+Childhood Diseases - Tetanus Neonatorum
+Childhood Diseases - Tuberculosis (TB)
+Children admitted with Respiratory Infections
+Children admitted with upper respiratory infections
+Children aged between 9 and 11 months fully immunized - Female
+Children aged between 9 and 11 months fully immunized- Male
+Children more than 10 years received TT10
+Children more than 10 years received TT10/ Td10
+Children more than 16 years received TT16
+Children more than 16 years received TT16/ Td16
+Children more than 5 years received DPT5 (2nd Booster)
+Deaths following female sterilization
+Deaths following male sterilization
+Dengue - Enzyme- Linked Immuno Sorbent Assay (ELISA) Test Positive
+Emergency - Acute Caridiac Emergencies
+Immunisation sessions held
+Immunisation sessions planned
+Infant Deaths up to 4 weeks due to Asphyxia
+Infant Deaths up to 4 weeks due to Other causes
+Infant Deaths up to 4 weeks due to Sepsis
+Infant deaths within 24 hours (1 to 23 hours) of birth
+Infant deaths within 24 hrs(1 to 23 Hrs) of birth
+Inpatient (Female) - Children < 18 years
+Inpatient (Female)- Children<18yrs
+Inpatient (Male) - Children < 18 years
+Inpatient (Male)- Children<18yrs
+Inpatient - Diarrhea with dehydration
+Inpatient - Malaria
+Inpatient Deaths - Female
+Inpatient Deaths - Male
+Malaria (Microscopy Tests ) - Plasmodium Falciparum test positive
+Malaria (Microscopy Tests ) - Plasmodium Vivax test positive
+Malaria (RDT) - Plamodium Falciparum test positive
+Malaria (RDT) - Plasmodium Vivax test positive
+No. of Children aged 9 to 12 months who received JE 1st dose
+Number of Adolscent / Adult deaths due to Accidents/Burn cases
+Number of Adolscent / Adult deaths due to Animal bites and stings
+Number of Adolscent / Adult deaths due to Cancer
+Number of Adolscent / Adult deaths due to Causes not known
+Number of Adolscent / Adult deaths due to Diarrhoeal diseases
+Number of Adolscent / Adult deaths due to HIV/AIDS
+Number of Adolscent / Adult deaths due to Heart disease/Hypertension related
+Number of Adolscent / Adult deaths due to Known Acute Disease
+Number of Adolscent / Adult deaths due to Known Chronic Disease
+Number of Adolscent / Adult deaths due to Neurological disease including strokes
+Number of Adolscent / Adult deaths due to Other Fever Related
+Number of Adolscent / Adult deaths due to Respiratory diseases including infections (other than TB)
+Number of Adolscent / Adult deaths due to Suicide
+Number of Adolscent / Adult deaths due to Tuberculosis
+Number of Child Deaths (1 -5 years) due to Diarrhoea
+Number of Child Deaths (1 -5 years) due to Fever related
+Number of Child Deaths (1 -5 years) due to Measles
+Number of Child Deaths (1 -5 years) due to Others
+Number of Child Deaths (1 -5 years) due to Pneumonia
+Number of Children Managed by Intervention - Medical
+Number of Children Managed by Intervention - Surgical
+Number of Deaths due to Acute Encephelitis Syndrome (AES)
+Number of Deaths due to Dengue
+Number of Deaths due to Japanese Encephalitis (JE)
+Number of Deaths due to Kala Azar
+Number of Deaths due to Malaria- Plasmodium Falciparum
+Number of Deaths due to Malaria- Plasmodium Vivax
+Number of Female children identified with Deficiency
+Number of Female children identified with Developmental delay
+Number of Female children identified with Disease
+Number of Immunisation sessions held during the month
+Number of Immunisation sessions held during the month where ASHAs were present
+Number of Immunisation sessions planned to be held during the month
+Number of Immunisation sessions where ASHAs were present
+Number of Infant Deaths (1 -12 months) due to Diarrhoea
+Number of Infant Deaths (1 -12 months) due to Fever related
+Number of Infant Deaths (1 -12 months) due to Measles
+Number of Infant Deaths (1 -12 months) due to Others
+Number of Infant Deaths (1 -12 months) due to Pneumonia
+Number of Infants (0 to 11 months old) received DPT1 immunisation
+Number of Infants (0 to 11 months old) received DPT2 immunisation
+Number of Infants (0 to 11 months old) received DPT3 immunisation
+Number of Infants (0 to 11 months old) received Hepatitis-B1 immunisation
+Number of Infants (0 to 11 months old) received Hepatitis-B2 immunisation
+Number of Infants (0 to 11 months old) received Hepatitis-B3 immunisation
+Number of Infants (0 to 11 months old) received Measles immunisation (First Dose)
+Number of Infants (0 to 11 months old) received OPV 0 (Birth Dose)
+Number of Infants (0 to 11 months old) received OPV1 (First Dose)
+Number of Infants (0 to 11 months old) received OPV2 (Second Dose)
+Number of Infants (0 to 11 months old) received OPV3 (Third Dose)
+Number of Infants (0 to 11 months old) received Pentavalent1 immunisation
+Number of Infants (0 to 11 months old) received Pentavalent2 immunisation
+Number of Infants (0 to 11 months old) received Pentavalent3 immunisation
+Number of Infants (0 to 11 months old)received BCG immunisation
+Number of Infants (more than 16 months old) received DPT Booster dose
+Number of Infants (more than 16 months old) received Measles immunisation (Second Dose)
+Number of Infants (more than 16 months old) received Measles, Mumps, Rubella (MMR) Vaccination
+Number of Infants (more than 16 months old) received OPV Booster dose
+Number of Infants (upto 48 hrs of age) received Hepatitis-B0 immunisation
+Number of Institutions having Operational Sick New Born and Child Care Units (SNCU)
+Number of Male children identified with Deficiency
+Number of Male children identified with Developmental delay
+Number of Male children identified with Disease
+Number of Maternal Deaths due to Abortion
+Number of Maternal Deaths due to Bleeding
+Number of Maternal Deaths due to High fever
+Number of Maternal Deaths due to Obstructed/prolonged labour
+Number of Maternal Deaths due to Other Causes (including causes not known)
+Number of Maternal Deaths due to Severe hypertension/fits
+Number of Maternal Deaths due to Severe hypertesnion/fits
+Number of Rogi Kalyan Samiti (RKS) meetings held
+Number of School children detected with Refractive errors
+Number of blood smears examined for Malaria
+Number of cases of AEFI - Death
+Number of cases of Abscess reported following immunisation [Adverse Event Following Immunisation (AEFI)]
+Number of cases of Adolescent or Adult deaths (age 6 years & above) where the cause was not known
+Number of cases of Adolescent or Adult deaths (age 6 years & above) with the probable cause being Animal bites and stings
+Number of cases of Adolescent or Adult deaths (age 6 years & above) with the probable cause being Diarrhoeal diseases
+Number of cases of Adolescent or Adult deaths (age 6 years & above) with the probable cause being HIV/AIDS
+Number of cases of Adolescent or Adult deaths (age 6 years & above) with the probable cause being Heart disease or related to Hypertension
+Number of cases of Adolescent or Adult deaths (age 6 years & above) with the probable cause being Known Acute disease
+Number of cases of Adolescent or Adult deaths (age 6 years & above) with the probable cause being Known Chronic disease
+Number of cases of Adolescent or Adult deaths (age 6 years & above) with the probable cause being Malaria
+Number of cases of Adolescent or Adult deaths (age 6 years & above) with the probable cause being Neurological disease including strokes
+Number of cases of Adolescent or Adult deaths (age 6 years & above) with the probable cause being Respiratory diseases including infections
+Number of cases of Adolescent or Adult deaths (age 6 years & above) with the probable cause being Trauma or Accidents or Burn cases
+Number of cases of Adolescent or Adult deaths (age 6 years & above) with the probable cause being Tuberculosis
+Number of cases of Adolescent or Adult deaths (age 6 years & above) with the probable cause being other Fever related
+Number of cases of Adolescent or Adult deaths (age 6 years & above) with the probable cause being suicide
+Number of cases of Death reported following immunisation [Adverse Event Following Immunisation (AEFI)]
+Number of cases of Diarrhoea and Dehydration reported in children below 5 years of age
+Number of cases of Diptheria reported in children below 5 years of age
+Number of cases of Infant deaths 24 hours to 4 weeks of birth with the probable cause being Asphyxia
+Number of cases of Infant deaths 24 hours to 4 weeks of birth with the probable cause being LBW
+Number of cases of Infant deaths 24 hours to 4 weeks of birth with the probable cause being Sepsis
+Number of cases of Infant deaths 24 hours to 4 weeks of birth with the probable cause being other than Sepsis, Asphyxia and LBW
+Number of cases of Infant deaths within 24 hrs of birth
+Number of cases of Infant or Child deaths between 1 month to 5 years of age with the probable cause being Diarrhoea
+Number of cases of Infant or Child deaths between 1 month to 5 years of age with the probable cause being Fever related
+Number of cases of Infant or Child deaths between 1 month to 5 years of age with the probable cause being Measles
+Number of cases of Infant or Child deaths between 1 month to 5 years of age with the probable cause being Pneumonia
+Number of cases of Infant or Child deaths between 1 month to 5 years of age with the probable cause being other than Pneumonia, Diarrhoea, Fever related and Measles
+Number of cases of Malaria reported in children below 5 years of age
+Number of cases of Maternal deaths (age 15-49 years) with the probable cause being Abortion
+Number of cases of Maternal deaths (age 15-49 years) with the probable cause being Bleeding
+Number of cases of Maternal deaths (age 15-49 years) with the probable cause being High Fever
+Number of cases of Maternal deaths (age 15-49 years) with the probable cause being Obstructed or prolonged labour
+Number of cases of Maternal deaths (age 15-49 years) with the probable cause being Severe hypertesnion or fits
+Number of cases of Maternal deaths (age 15-49 years) with the probable cause being other causes (excluding abortion; obstructed or prolonged labour; severe hypertension or fits;
+Number of cases of Measles reported in children below 5 years of age
+Number of cases of Pertusis reported in children below 5 years of age
+Number of cases of Polio reported in children below 5 years of age
+Number of cases of Tetanus neonatarum reported in children below 5 years of age
+Number of cases of Tetanus other than neonatarum reported in children below 5 years of age
+Number of cases of death of Inpatients (sum of items 14.10.2.a and 14.10.2.b)
+Number of cases of other complications reported following immunisation [Adverse Event Following Immunisation (AEFI)]
+Number of children (12-59 months) provided Albendazole
+Number of children (6 - 10 years) provided albendazole in schools
+Number of children (6 month to 6 years) screened by RBSK mobile health teams at Anganwadi center
+Number of children (6 years to 18 years) screened by RBSK mobile health teams at Govt and Govt aided schools
+Number of children (6-59 months) provided 8-10 doses (1ml) of IFA syrup (Bi weekly)
+Number of children (9 months to 5 years old) administered 1st dose of Vitamin A (Dose-1)
+Number of children (9 months to 5 years old) administered 9th dose of Vitamin A (Dose-9)
+Number of children (9 months to 5 years old) were administered 5th dose of Vitamin A (Dose-5)
+Number of children (more than 10 years old) given TT10
+Number of children (more than 16 months old) received Japanese Encephalitis (JE) vaccination
+Number of children (more than 16 years old) given TT16
+Number of children (more than 5 years old) given DT5
+Number of children admitted in NRC
+Number of children below 5 years of age admitted with Respiratory Infections
+Number of children covered under WIFS JUNIOR (6 - 10 years ) provided 4-5 IFA tablets in schools
+Number of children discharged with target weight gain from the NRCs
+Number of children more than 16 months of age who received Japanese Encephalitis (JE) vaccine
+Number of children provided free glasses
+Number of death cases of Inpatient females
+Number of death cases of Inpatient males
+Number of deaths following female sterilization
+Number of deaths following male sterilization
+Number of deaths occurring at Emergency Department
+Number of deaths occurring at SNCU
+Number of facilities having a Rogi Kalyan Samiti (RKS)
+Number of maternal deaths reported through Community based Maternal Death Review (CBMDR)
+Number of out of school children (6-10 years) given 4-5 IFA tablets at Anganwadi Centres
+Number of out of school children (6-10 years) provided albendazole at Anganwadi Centres
+Number of severely underweight children provided Health Checkup (0-5 years)
+Number of severely underweight children provided Health Checkup (0-5 yrs)
+Number of sick infants provided - Free Diagnostics under JSSK
+Number of sick infants provided - Free Drop Back home under JSSK
+Number of sick infants provided - Free Home to facility transport under JSSK
+Number of sick infants provided - Free Medicines under JSSK
+Number of sick infants provided - Interfacility transfers when needed under JSSK
+Number of still births
+Out of blood smears examined for malaria, number of blood smears tested positive for Plasmodium Falciparum
+Out of blood smears examined for malaria, number of blood smears tested positive for Plasmodium Vivax
+RDT conducted for Malaria
+Still Birth
+Total Blood Smears Examined for Malaria
+Total Facility Based Maternal Death Reviews (FBMDR) done
+Total Maternal Deaths Reviewed (MDR) by CMO
+Total Maternal Deaths Reviewed (MDR) by DM
+Total number of children (12 to 23 months old) fully immunised (BCG+DPT123+OPV123/Pentavalent123+Measles) during the month (sum of items 10.3.1.a and 10.3.1.b)
+Total number of children (9 to 11 months old) fully immunised (BCG+DPT123/Pentavalent123+OPV123+Measles) during the month (sum of items 10.1.13.a and 10.1.13.b)
+Total number of female children (12 to 23 months old) fully immunised (BCG+DPT123/Pentavalent123+OPV123+Measles) during the month
+Total number of female children (9 to 11 months old) fully immunised (BCG+DPT123/Pentavalent123+OPV123+Measles) during the month
+Total number of male children (12 to 23 months old) fully immunised (BCG+DPT123/Pentavalent123+OPV123+Measles) during the month
+Total number of male children (9 to 11 months old) fully immunised (BCG+DPT123/Pentavalent123+OPV123+Measles) during the month
