@@ -23,5 +23,7 @@
     "GW_F_mgL_median",
     "GW_TDS_median",
     "n_wells"
-  ]
+  ],
+  "frozen_reference_for_new_years": "susceptibility_reference.json",
+  "how_to_score_new_district_years": "Save a CSV with columns District, Year, and the same GW_* / n_wells columns as training. Optional: HMIS_burden_per_100k if you want HMIS high/low tiers vs the same reference cohort. Run: python scripts/predict_susceptibility_new_year.py --reference results/models/susceptibility_reference.json --input your.csv -o out.csv"
 }

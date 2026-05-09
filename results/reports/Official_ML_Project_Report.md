@@ -92,8 +92,31 @@ These files **do not rely on regression accuracy**. They summarise **(A) cohort-
 | **Full Yes/No report (Markdown table)** | **`results/reports/District_Susceptibility_YesNo_Report.md`** |
 | Raw data table (CSV) | `results/models/district_susceptibility_profile.csv` |
 | Plain-language definitions | `results/models/susceptibility_definitions.json` |
+| **Frozen reference for future years** | **`results/models/susceptibility_reference.json`** |
 
 Both reports are **regenerated automatically** when you run `python scripts/run_pipeline.py`.
+
+### 8.1 Naya year / nayi rows — susceptibility kaise “predict” hoti hai?
+
+Pehle wala PDF/CSV **reference cohort** (jo master training rows hain) par tertiles banata hai. **Naye saal** ke liye alag rule hai taaki tum purane data ke **same scale** par jawab pao:
+
+1. **`run_pipeline.py`** chalao → **`susceptibility_reference.json`** save hota hai: har GW feature ka **frozen mean/std** + **`Environmental_exposure_index` ke tertile bin edges** (+ optional HMIS burden rate ke bin edges).
+2. Naya CSV banao: **`District`**, **`Year`**, aur reference JSON mein jo **`gw_cols`** hain unke **same columns** (CGWB medians + `n_wells`).
+3. Command:
+
+```bash
+python scripts/predict_susceptibility_new_year.py \
+  --reference results/models/susceptibility_reference.json \
+  --input path/to/your_new_district_year_rows.csv \
+  -o results/models/susceptibility_new_predictions.csv
+```
+
+**Web UI (Streamlit):** project root se `streamlit run streamlit_app.py` — CSV upload / manual row se susceptibility + ML prediction browser mein.
+
+- **Environmental Yes/No:** nayi row ke GW values → **purane cohort ke mean/std se z-score** → **purane cohort ke hi tertile cutoffs** par Low/Medium/**High** → **High = Yes**.
+- **HMIS Yes/No:** sirf tab jab tum input mein **`HMIS_burden_per_100k`** doge *aur* reference mein HMIS bins ban paaye hon; warna output mein explicitly **`N/A (add HMIS_burden_per_100k …)`** likha aata hai. Sirf GW doge to **environmental jawab phir bhi milega**.
+
+Reference ko update karna = master data badhakar **dobara pipeline** chalana (naya cohort → nayi thresholds).
 
 **Environmental `Environmental_susceptibility_high_stress_YN`:** **Yes** if that district–year sits in the **top tertile** of `Environmental_exposure_index` (mean of z-scores vs all rows on CGWB medians + log well count). **Top_GW_stress_1..3** name the three chemistry/monitoring metrics most **shifted from the Bihar cohort** for that row (with z in brackets)—use this to say *“isolated high nitrate / TDS / … vs peers”*, not *“ML predicted illness”*.
 
@@ -111,6 +134,8 @@ Both reports are **regenerated automatically** when you run `python scripts/run_
 | Fitted bundle | `results/models/best_model.joblib` |
 | Figures | `results/figures/*.png` |
 | Susceptibility CSV + defs | `results/models/district_susceptibility_profile.csv`, `susceptibility_definitions.json` |
+| Frozen reference (new years) | `results/models/susceptibility_reference.json` |
+| CLI new-year scoring | `scripts/predict_susceptibility_new_year.py` |
 | **Yes/No reports** | **`results/reports/District_Susceptibility_YesNo_Report.pdf`**, **`District_Susceptibility_YesNo_Report.md`** |
 
 ---

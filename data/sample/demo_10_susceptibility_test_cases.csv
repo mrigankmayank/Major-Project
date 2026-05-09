@@ -1,0 +1,11 @@
+District,Year,GW_pH_median,GW_EC_uScm_median,GW_HCO3_median,GW_Cl_median,GW_SO4_median,GW_NO3_median,GW_F_mgL_median,GW_TDS_median,n_wells,HMIS_burden_per_100k,Demo_expected_EnvYN,Demo_expected_HMIS_high,Demo_note
+TC01_Medium_AllMeans,2030,7.8315,638.07,242.60,50.86,28.97,16.28,0.268,325.25,10,30.0,No,No,Sab GW cohort mean ke paas -> Medium band Environmental No
+TC02_Low_AllBelowMean,2030,7.83,381,160,25,12,2,0.10,120,3,8.0,No,No,Sab cohort se niche -> Low Environmental No
+TC03_High_EC_onlyDriver,2030,7.8315,980.07,242.60,50.86,28.97,16.28,0.268,325.25,10,80.0,Yes,Yes,Sirf EC zyada up -> High Environmental Yes + HMIS rate high tier
+TC04_High_MultiPolluters,2030,7.83,980,310,110,61,50.5,0.268,673,15,5.0,Yes,No,Bahut contaminants high -> Env Yes HMIS rate low tier
+TC05_High_Fluoride_nitrate,2030,7.83,750,280,85,45,48,0.75,520,12,25.0,Yes,No,F NO3 EC Cl SO4 up -> Env Yes
+TC06_Borderline_Medium_No,2030,7.8315,750,242.60,50.86,28.97,16.28,0.268,325.25,10,30.0,No,No,Thoda EC up still Medium Environmental No
+TC07_High_WellsIntensity,2030,7.8315,638.07,242.60,50.86,28.97,16.28,0.268,325.25,35,14.5,Yes,No,Zyada wells -> monitoring intensity z high -> Env Yes HMIS mid tier not high
+TC08_Low_minimal_NO3,2030,8.1,450,200,22,10,0.5,0.05,180,4,12.0,No,No,Dilute GW overall Environmental No
+TC09_High_extreme_TDS_NO3,2030,7.5,850,280,95,55,55,0.45,720,12,90.0,Yes,Yes,Strong chemistry + HMIS high tier
+TC10_Low_acidic_shift,2030,7.15,600,230,48,27,14,0.25,300,8,22.0,No,No,pH low baaki moderate -> Low Environmental No

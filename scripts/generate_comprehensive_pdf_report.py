@@ -571,6 +571,8 @@ def main() -> None:
         "results/models/intervention_priority_top15.csv",
         "results/models/district_susceptibility_profile.csv",
         "results/models/susceptibility_definitions.json",
+        "results/models/susceptibility_reference.json",
+        "scripts/predict_susceptibility_new_year.py",
         "results/reports/District_Susceptibility_YesNo_Report.pdf",
         "results/reports/District_Susceptibility_YesNo_Report.md",
         "results/figures/actual_vs_predicted.png",

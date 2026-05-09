@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "gw_cols": [
+    "GW_pH_median",
+    "GW_EC_uScm_median",
+    "GW_HCO3_median",
+    "GW_Cl_median",
+    "GW_SO4_median",
+    "GW_NO3_median",
+    "GW_F_mgL_median",
+    "GW_TDS_median",
+    "n_wells"
+  ],
+  "log1p_cols": [
+    "n_wells"
+  ],
+  "feature_stats": {
+    "GW_pH_median": {
+      "mean": 7.831507936507935,
+      "std": 0.638057515271276
+    },
+    "GW_EC_uScm_median": {
+      "mean": 638.0698412698413,
+      "std": 171.46085548447164
+    },
+    "GW_HCO3_median": {
+      "mean": 242.60232460317462,
+      "std": 60.62350331369137
+    },
+    "GW_Cl_median": {
+      "mean": 50.85702380952382,
+      "std": 29.535499631184827
+    },
+    "GW_SO4_median": {
+      "mean": 28.968542063492066,
+      "std": 15.970751977880838
+    },
+    "GW_NO3_median": {
+      "mean": 16.284246031746033,
+      "std": 17.12333927730623
+    },
+    "GW_F_mgL_median": {
+      "mean": 0.26814285714285707,
+      "std": 0.2647515671157575
+    },
+    "GW_TDS_median": {
+      "mean": 325.2523404255319,
+      "std": 173.64642010036184
+    },
+    "n_wells": {
+      "mean": 2.2823656840331554,
+      "std": 0.6158374036004564
+    }
+  },
+  "reference_n_rows": 63,
+  "exposure_bin_edges": [
+    -1.0018,
+    -0.1451666666666667,
+    0.1966999999999997,
+    0.738
+  ],
+  "exposure_band_labels": [
+    "Low",
+    "Medium",
+    "High"
+  ],
+  "hmis_burden_bin_edges": [
+    0.2916021496910475,
+    14.296833332198453,
+    47.49214375409694,
+    965.6929148124108
+  ],
+  "hmis_burden_band_labels": [
+    "low",
+    "mid",
+    "high"
+  ],
+  "how_to_predict_new_years": "Save a CSV with columns District, Year, and the same GW_* / n_wells columns as training. Optional: HMIS_burden_per_100k if you want HMIS high/low tiers vs the same reference cohort. Run: python scripts/predict_susceptibility_new_year.py --reference results/models/susceptibility_reference.json --input your.csv -o out.csv"
+}
