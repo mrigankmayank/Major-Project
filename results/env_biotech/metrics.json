@@ -1,0 +1,29 @@
+{
+  "dataset": "UCI QSAR biodegradation (Mansouri et al., 2013 via UCI)",
+  "n_samples": 1055,
+  "n_features": 41,
+  "class_counts_total": {
+    "NRB": 699,
+    "RB": 356
+  },
+  "cv_splits": 5,
+  "random_state": 42,
+  "selected_model": "random_forest",
+  "models": {
+    "logistic_regression_balanced": {
+      "train_oof_auc": 0.9251420142485015,
+      "holdout_auc": 0.9111670020120725,
+      "holdout_accuracy": 0.8436018957345972
+    },
+    "random_forest": {
+      "train_oof_auc": 0.9217022879201582,
+      "holdout_auc": 0.9422535211267606,
+      "holdout_accuracy": 0.8862559241706162
+    },
+    "xgboost": {
+      "train_oof_auc": 0.9174842293569343,
+      "holdout_auc": 0.9403420523138832,
+      "holdout_accuracy": 0.8815165876777251
+    }
+  }
+}

@@ -10,6 +10,7 @@ from typing import Any
 import joblib
 import numpy as np
 import pandas as pd
+from scipy.stats import spearmanr
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import Ridge
@@ -182,6 +183,25 @@ def run_training(
         results.append(spatial_group_cv(X, y, groups, name, est, n_splits=splits, random_state=random_state))
 
     best = min(results, key=lambda r: r.rmse_mean)
+    y_arr = y.values.astype(float)
+    oof_best = best.oof_predictions
+    valid_oof = np.isfinite(oof_best)
+    if valid_oof.any():
+        yt, yp = y_arr[valid_oof], oof_best[valid_oof]
+        pooled_oof_rmse = _rmse(yt, yp)
+        pooled_oof_r2 = float(r2_score(yt, yp))
+        naive_mean = float(np.mean(y_arr))
+        naive_rmse = _rmse(yt, np.full_like(yt, naive_mean))
+        rho, rho_p = spearmanr(yt, yp)
+        pooled_spearman_r = float(rho) if np.isfinite(rho) else float("nan")
+        pooled_spearman_p = float(rho_p) if np.isfinite(rho_p) else float("nan")
+        rmse_gain_vs_naive_pct = (
+            float(100.0 * (naive_rmse - pooled_oof_rmse) / naive_rmse) if naive_rmse > 0 else float("nan")
+        )
+    else:
+        pooled_oof_rmse = pooled_oof_r2 = naive_rmse = float("nan")
+        pooled_spearman_r = pooled_spearman_p = rmse_gain_vs_naive_pct = float("nan")
+
     best_est = models[best.name]
     final_pipe = build_full_pipeline(
         best_est,
@@ -194,10 +214,37 @@ def run_training(
     joblib.dump({"pipeline": final_pipe, "feature_cols": list(X.columns), "model_name": best.name}, artifact_path)
 
     metrics = {
+        "project_framing": {
+            "primary_goal": (
+                "Reproducible fusion of official CGWB + HMIS + Census data, with spatially honest "
+                "validation (held-out districts). HMIS log-burden is an external referent for "
+                "associational checks—not a forecasting target."
+            ),
+            "success_criteria": [
+                "Transparent pipeline and artifacts",
+                "GroupKFold by district (no leakage across geography)",
+                "Compare OOF error to naive mean baseline",
+                "Report rank alignment (Spearman) for prioritisation narratives",
+                "SHAP for exposure directionality (hypothesis generation)",
+            ],
+            "why_fold_r2_can_be_negative": (
+                "Per-fold R² uses small held-out district sets; predicting unseen districts with "
+                "groundwater-only features is intentionally strict. Pooled OOF metrics and baseline "
+                "comparison are clearer summaries for this study design."
+            ),
+        },
         "n_districts": int(n_groups),
         "n_rows": int(len(df)),
         "spatial_cv_splits": splits,
         "best_model": best.name,
+        "pooled_oof_metrics_best_model": {
+            "rmse": pooled_oof_rmse,
+            "r2": pooled_oof_r2,
+            "spearman_r": pooled_spearman_r,
+            "spearman_p_two_sided": pooled_spearman_p,
+            "naive_mean_baseline_rmse": naive_rmse,
+            "rmse_improvement_vs_naive_pct": rmse_gain_vs_naive_pct,
+        },
         "cv_by_model": [
             {"model": r.name, "rmse_mean": r.rmse_mean, "mae_mean": r.mae_mean, "r2_mean": r.r2_mean}
             for r in results
@@ -218,6 +265,7 @@ def run_training(
         "artifact_path": str(artifact_path),
         "best_cv": best,
         "oof_frame": oof_df,
+        "training_df": df,
         "X": X,
         "y": y,
         "groups": groups,

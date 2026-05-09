@@ -1,0 +1,27 @@
+{
+  "definition_environmental_yes": "Yes if district\u2013year is in top tertile of Environmental_exposure_index (mean z-score vs all district-years on CGWB features + log wells).",
+  "definition_hmis_high_yes": "Yes if High_risk_tercile == high from HMIS burden per 100k (when column exists).",
+  "hmis_indicators": [
+    "Childhood Diseases - Severe Acute Malnutrition (SAM)",
+    "Childhood Diseases - Diarrhoea",
+    "Childhood Diseases - Pneumonia",
+    "Childhood Diseases - Measles",
+    "Number of Infant Deaths (1 -12 months) due to Diarrhoea",
+    "Number of Infant Deaths (1 -12 months) due to Pneumonia",
+    "Number of Child Deaths (1 -5 years) due to Diarrhoea",
+    "Number of Child Deaths (1 -5 years) due to Pneumonia",
+    "Number of cases of Infant deaths within 24 hrs of birth",
+    "Number of still births"
+  ],
+  "gw_features_used": [
+    "GW_pH_median",
+    "GW_EC_uScm_median",
+    "GW_HCO3_median",
+    "GW_Cl_median",
+    "GW_SO4_median",
+    "GW_NO3_median",
+    "GW_F_mgL_median",
+    "GW_TDS_median",
+    "n_wells"
+  ]
+}

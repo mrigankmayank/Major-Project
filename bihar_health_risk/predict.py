@@ -25,7 +25,7 @@ def main() -> None:
         raise SystemExit(f"Missing columns: {missing}")
     pred = pipe.predict(df[feats])
     out = df.copy()
-    out["predicted_Stunting_pct"] = pred
+    out["predicted_Target_log_burden_per100k"] = pred
     out.to_csv(args.out, index=False)
     print(f"Wrote {args.out}")
 

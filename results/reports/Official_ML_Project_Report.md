@@ -1,94 +1,118 @@
-# Bihar environmental exposure & child-health vulnerability (official data)
+# Bihar official environmental–health data integration (spatial generalisation audit)
 
-**Updated:** 2026-05-02 (reframed target and HMIS layer)  
-**Framing:** Explainable **district–year vulnerability** linked to **groundwater exposure**, not “predict raw SAM counts.”
-
----
-
-## 1. Why the model was reframed
-
-Earlier runs used **raw HMIS SAM counts** as the target. Counts are dominated by **district population**, so models mostly track size, not vulnerability. With **~63 district–year rows**, sparse signal, and **groundwater-only** predictors, spatial CV **R²** was negative.
-
-**Changes made:**
-
-1. **Target** is now **`Target_log_burden_per100k`** = **log(1 + HMIS burden rate per 100,000 population)**.  
-   - **Burden** = sum of several official HMIS child-health indicators (same district–year, same HMIS rollup rule).  
-   - **Denominator** = **Census 2011 district population** (`CENSUS 2011-A-1_...xlsx`), static across years (approximation until projected pops are added).
-
-2. **Vulnerability score** **`HMIS_vulnerability_z`**: mean of **z-scores of log1p(count)** across those indicators (for ranking and interpretation; the primary supervised target is still the log-rate above).
-
-3. **Optional label** **`High_risk_tercile`**: tertiles of `HMIS_burden_per_100k` when the distribution supports it (for future classification work).
-
-4. Models remain **Ridge / Random Forest / XGBoost** on the **log-rate** (continuous, well-behaved). **Poisson / Negative Binomial** on raw counts with a population **offset** is a natural next step if you add `statsmodels` or sklearn pipelines with offsets.
+**Updated:** 2026-05-09  
+**Core positioning:** This work is a **reproducible analytics pipeline** that joins **CGWB groundwater**, **HMIS child-health burden**, and **Census 2011** population into one district–year table, then runs **spatially blocked** ML with full transparency (metrics, out-of-fold predictions, SHAP). It is **not** positioned as a high-precision forecaster of HMIS outcomes from chemistry alone.
 
 ---
 
-## 2. Data sources
+## 1. Project objective (what we claim)
+
+| Claim | What we deliver |
+|--------|------------------|
+| **Official data fusion** | Scripted path from raw inputs → `data/processed/official_district_year_master.csv` |
+| **Spatial honesty** | **GroupKFold by district**: models never see test districts during training—appropriate for “would this pattern hold elsewhere in Bihar?” |
+| **Associational validation** | HMIS-derived **`Target_log_burden_per100k`** is a **referent** to ask whether groundwater covaries with burden at district scale—not a clinical prediction endpoint |
+| **Interpretability** | SHAP + residual plots + saved OOF predictions for audit |
+
+**What we do *not* claim:** That groundwater features alone should yield high **R²** when extrapolating to unseen districts. That bar is inappropriate for sparse ecological panels and thin \(X\).
+
+---
+
+## 2. Why weak correlation is expected—not a flaw
+
+1. **Held-out districts** stress-test whether associations **transfer across space**. Local confounding (facilities, reporting, geography) often dominates; **negative per-fold R²** can appear even when the pipeline is correct.  
+2. **Ecological units:** District–year aggregates mix many causal pathways; marginal correlation with one exposure layer is typically **small**.  
+3. **HMIS noise:** Reporting and coverage vary; composite burden adds variance.  
+4. **Thin predictors:** Models use **groundwater + monitoring intensity** only. Burden is multi-factorial by construction.
+
+The evaluation therefore emphasises **naive baselines**, **pooled out-of-fold error**, and **rank alignment** (Spearman), not textbook **R²** on tiny folds.
+
+See **`results/models/metrics.json`** → `project_framing` and `pooled_oof_metrics_best_model`.
+
+---
+
+## 3. Target and features (unchanged technically)
+
+- **Target:** `Target_log_burden_per100k` = log(1 + HMIS composite burden per 100k), denominator Census 2011 district population (static across years until projections are added).  
+- **Features:** CGWB district–year medians (`GW_*`, `n_wells`).  
+- **Also in table for analysis:** `HMIS_vulnerability_z`, `High_risk_tercile` (where supported).
+
+---
+
+## 4. Data sources
 
 | Layer | Role | Location |
 |--------|------|----------|
-| CGWB groundwater | Exposure features (district × year medians, `n_wells`) | `official data/cgwb*.pdf` → `data/raw_groundwater/cgwb_bihar_wells_*.csv` |
-| HMIS Bihar | Multi-indicator burden + `HMIS_vulnerability_z` | `14277- Dataful/...hmis...xlsx` → `official data/extracted/hmis_child_burden_vulnerability_district_year.csv` |
-| Census 2011 | District population (Bihar, “Total” row) | `CENSUS 2011-A-1_NO_OF_VILLAGES_TOWNS_HOUSEHOLDS_POPULATION_AND_AREA.xlsx` |
-| **Master table** | Training CSV | `data/processed/official_district_year_master.csv` |
-
-**HMIS indicators currently summed into `HMIS_burden_raw`** (each with facility rollup `Public and Private Facilities OR Rural and Urban Facilities`, category `Total`):
-
-- Childhood Diseases — SAM, Diarrhoea, Pneumonia, Measles  
-- Infant deaths (1–12 months) due to Diarrhoea / Pneumonia  
-- Child deaths (1–5 years) due to Diarrhoea / Pneumonia  
-- Number of cases of Infant deaths within 24 hrs of birth  
-- Number of still births  
-
-*(Other labels you mentioned—e.g. maternal anemia, LBW—can be appended in `bihar_health_risk/etl_hmis_vulnerability.py` once exact HMIS strings are verified in your file.)*
+| CGWB groundwater | Exposure features | `data/raw_groundwater/cgwb_bihar_wells_*.csv` |
+| HMIS Bihar | Burden + vulnerability fields | Extract → `official data/extracted/hmis_child_burden_vulnerability_district_year.csv` |
+| Census 2011 | Population for rates | `CENSUS 2011-A-1_NO_OF_VILLAGES_TOWNS_HOUSEHOLDS_POPULATION_AND_AREA.xlsx` |
+| **Master table** | Panel for ML | `data/processed/official_district_year_master.csv` |
 
 ---
 
-## 3. Modeling setup
+## 5. How to run
 
-| Item | Detail |
-|------|--------|
-| Unit | District × Year |
-| **y** | `Target_log_burden_per100k` |
-| **X** | `GW_pH_median`, `GW_EC_uScm_median`, `GW_HCO3_median`, `GW_Cl_median`, `GW_SO4_median`, `GW_NO3_median`, `GW_F_mgL_median`, `GW_TDS_median`, `n_wells` |
-| Validation | GroupKFold by **District** (5 folds) |
-| Scripts | `scripts/extract_cgwb_bihar_csvs.py` → `scripts/build_official_master_dataset.py` → `scripts/run_pipeline.py` |
+```text
+python scripts/extract_cgwb_bihar_csvs.py    # if rebuilding GW extracts
+python scripts/build_official_master_dataset.py
+python scripts/run_pipeline.py
+```
 
----
-
-## 4. Latest CV metrics (after reframe)
-
-From `results/models/metrics.json` (out-of-fold, spatial CV):
-
-| Model | Mean RMSE | Mean MAE | Mean R² |
-|--------|-----------|----------|---------|
-| ridge | 1.496 | 1.229 | −0.424 |
-| **rf (selected)** | **1.494** | **1.252** | **−0.450** |
-| xgb | 1.668 | 1.400 | −0.797 |
-
-RMSE/MAE are on **log(1 + burden per 100k)** scale, not case counts. **R²** can still be modest with few units and weak exposure-only signal; use outputs mainly for **relative ranking**, SHAP direction, and **hypothesis generation**, not point forecasting claims.
+Artifacts: `results/models/*`, `results/figures/*`.
 
 ---
 
-## 5. Recommended next steps
+## 6. Reading the metrics file
 
-1. **Add covariates:** rainfall, sanitation, literacy, WASH (Census/NFHS/IMD) to strengthen signal.  
-2. **Population over time:** replace static 2011 pop with projected district population by year for more accurate rates.  
-3. **Count models:** Poisson / Negative Binomial with **log(population) offset** on `HMIS_burden_raw` or component counts.  
-4. **Classification:** train on `High_risk_tercile` or top-quantile SAM rate with **recall-focused** metrics.  
-5. **Arsenic / TDS:** extend CGWB 2023 parsing to expose **As** and consistent **TDS** in the feature block.
+- **`project_framing`:** Study intent and why fold-wise **R²** is secondary.  
+- **`pooled_oof_metrics_best_model`:** Single summary on **all** out-of-fold predictions for the selected model—**RMSE**, **R²**, **Spearman ρ**, **RMSE vs predicting the global mean** (`naive_mean_baseline_rmse`, `rmse_improvement_vs_naive_pct`).  
+  If **`rmse_improvement_vs_naive_pct`** is **negative**, the spatially blocked model does **not** beat “always predict the training-set mean”—that is an **honest finding** for groundwater-only features and strengthens the message that this is **not** a forecasting product.  
+- **`cv_by_model`:** Fold-averaged RMSE/MAE/R² for method comparison (R² here is a **strict diagnostic**, not the headline).
 
 ---
 
-## 6. Artifacts
+## 7. Recommended extensions (if you want stronger associational signal)
+
+1. Add district/year covariates (rainfall, sanitation, literacy, WASH proxies).  
+2. Replace static 2011 population with projected populations by year.  
+3. Poisson / Negative Binomial on counts with **log(population) offset**.  
+4. Classification on `High_risk_tercile` with ROC-AUC under the same spatial CV.
+
+---
+
+## 8. District-level Yes/No style outputs (presentation-friendly)
+
+These files **do not rely on regression accuracy**. They summarise **(A) cohort-relative groundwater stress** and **(B) observed HMIS burden tertiles** where available.
+
+**Read these first for Yes/No answers for every district-year:**
+
+| Output | Path |
+|--------|------|
+| **Full Yes/No report (PDF)** | **`results/reports/District_Susceptibility_YesNo_Report.pdf`** |
+| **Full Yes/No report (Markdown table)** | **`results/reports/District_Susceptibility_YesNo_Report.md`** |
+| Raw data table (CSV) | `results/models/district_susceptibility_profile.csv` |
+| Plain-language definitions | `results/models/susceptibility_definitions.json` |
+
+Both reports are **regenerated automatically** when you run `python scripts/run_pipeline.py`.
+
+**Environmental `Environmental_susceptibility_high_stress_YN`:** **Yes** if that district–year sits in the **top tertile** of `Environmental_exposure_index` (mean of z-scores vs all rows on CGWB medians + log well count). **Top_GW_stress_1..3** name the three chemistry/monitoring metrics most **shifted from the Bihar cohort** for that row (with z in brackets)—use this to say *“isolated high nitrate / TDS / … vs peers”*, not *“ML predicted illness”*.
+
+**HMIS `HMIS_observed_high_burden_YN`:** **Yes** if `High_risk_tercile` is **high** (top third of observed composite burden per 100k). Indicator names summed into the composite are listed in `HMIS_indicator_list_reference` on each row and fully in `susceptibility_definitions.json`.
+
+---
+
+## 9. Artifacts
 
 | Output | Path |
 |--------|------|
 | Master CSV | `data/processed/official_district_year_master.csv` |
-| Metrics & OOF | `results/models/metrics.json`, `oof_predictions.csv` |
-| Fitted model | `results/models/best_model.joblib` |
+| Metrics (incl. framing + pooled OOF) | `results/models/metrics.json` |
+| OOF predictions | `results/models/oof_predictions.csv` |
+| Fitted bundle | `results/models/best_model.joblib` |
 | Figures | `results/figures/*.png` |
+| Susceptibility CSV + defs | `results/models/district_susceptibility_profile.csv`, `susceptibility_definitions.json` |
+| **Yes/No reports** | **`results/reports/District_Susceptibility_YesNo_Report.pdf`**, **`District_Susceptibility_YesNo_Report.md`** |
 
 ---
 
-*This report supersedes the “raw SAM count only” description. The scientific story is now **environmental exposure and district-level child-health vulnerability in Bihar**, using official HMIS + CGWB + Census.*
+*Framing summary: **integration + spatial audit + interpretability**; HMIS outcomes provide context, not a promise of accurate prediction from groundwater chemistry alone.*

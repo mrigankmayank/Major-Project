@@ -23,7 +23,7 @@ DEFAULT_MERGED_CSV = OFFICIAL_MASTER_CSV
 
 DISTRICT_COL = "District"
 YEAR_COL = "Year"
-# log1p(HMIS multi-indicator child burden / Census 2011 population * 1e5)
+# HMIS referent for associational checks (log rate per 100k); not framed as a forecasting endpoint alone.
 TARGET_COL = "Target_log_burden_per100k"
 
 # CGWB district–year medians + monitoring intensity

@@ -1,8 +1,27 @@
 {
+  "project_framing": {
+    "primary_goal": "Reproducible fusion of official CGWB + HMIS + Census data, with spatially honest validation (held-out districts). HMIS log-burden is an external referent for associational checks\u2014not a forecasting target.",
+    "success_criteria": [
+      "Transparent pipeline and artifacts",
+      "GroupKFold by district (no leakage across geography)",
+      "Compare OOF error to naive mean baseline",
+      "Report rank alignment (Spearman) for prioritisation narratives",
+      "SHAP for exposure directionality (hypothesis generation)"
+    ],
+    "why_fold_r2_can_be_negative": "Per-fold R\u00b2 uses small held-out district sets; predicting unseen districts with groundwater-only features is intentionally strict. Pooled OOF metrics and baseline comparison are clearer summaries for this study design."
+  },
   "n_districts": 33,
   "n_rows": 63,
   "spatial_cv_splits": 5,
   "best_model": "rf",
+  "pooled_oof_metrics_best_model": {
+    "rmse": 1.5023319690286854,
+    "r2": -0.17884085314566533,
+    "spearman_r": -0.007680491551459294,
+    "spearman_p_two_sided": 0.9523610355161805,
+    "naive_mean_baseline_rmse": 1.3836884631804012,
+    "rmse_improvement_vs_naive_pct": -8.574437744142397
+  },
   "cv_by_model": [
     {
       "model": "ridge",
@@ -14,13 +33,13 @@
       "model": "rf",
       "rmse_mean": 1.494176201750766,
       "mae_mean": 1.2516691459523668,
-      "r2_mean": -0.45033695903166693
+      "r2_mean": -0.45033695903166676
     },
     {
       "model": "xgb",
-      "rmse_mean": 1.6676568156259548,
-      "mae_mean": 1.3995609643291553,
-      "r2_mean": -0.7966777745282617
+      "rmse_mean": 1.6698328862069123,
+      "mae_mean": 1.4010916554698924,
+      "r2_mean": -0.8016915837829967
     }
   ]
 }

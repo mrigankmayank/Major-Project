@@ -23,6 +23,7 @@ from bihar_health_risk.config import (  # noqa: E402
 )
 from bihar_health_risk.dataio import load_master_table, missingness_report  # noqa: E402
 from bihar_health_risk.explain import save_shap_summary, shap_importance_table  # noqa: E402
+from bihar_health_risk.susceptibility import save_susceptibility_artifacts  # noqa: E402
 from bihar_health_risk.train import run_training  # noqa: E402
 from bihar_health_risk.viz import plot_actual_vs_predicted, plot_residuals, plot_top_district_risk  # noqa: E402
 
@@ -113,7 +114,13 @@ def main() -> None:
     )
     priority.to_csv(MODELS_DIR / "intervention_priority_top15.csv", index=False)
 
+    prof_path, def_path, yesno_pdf, yesno_md = save_susceptibility_artifacts(out["training_df"], out_dir=MODELS_DIR)
+
     print(json.dumps(out["metrics"], indent=2))
+    print("Susceptibility profile (CSV):", prof_path)
+    print("Susceptibility definitions (JSON):", def_path)
+    print("YES/NO report (PDF):", yesno_pdf)
+    print("YES/NO report (Markdown):", yesno_md)
     print("Artifacts:", MODELS_DIR, FIGURES_DIR)
 
 
