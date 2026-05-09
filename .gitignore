@@ -11,3 +11,5 @@ venv/
 .ruff_cache/
 .DS_Store
 Thumbs.db
+# Microsoft Office lock files
+~$*.docx
