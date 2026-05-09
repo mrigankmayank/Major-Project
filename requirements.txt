@@ -1,4 +1,7 @@
 # Bihar environmental exposure / child health risk — ML stack
+#
+# Streamlit Cloud: Streamlit pulls in pyarrow (required). If deploy fails building pyarrow,
+# keep repo-root runtime.txt (python-3.11) so pip gets manylinux wheels instead of compiling from source.
 numpy>=1.24,<3
 pandas>=2.0,<3
 scikit-learn>=1.3,<2
@@ -6,7 +9,8 @@ xgboost>=2.0,<4
 shap>=0.44,<1
 matplotlib>=3.7,<4
 joblib>=1.3,<2
-pyarrow>=14.0,<22
+# pyarrow omitted: optional for .parquet master tables only (CSV works). Cloud builds often fail from source.
+# Local Parquet: pip install "pyarrow>=14,<22"
 openpyxl>=3.1,<4
 pymupdf>=1.24,<2
 fpdf2>=2.7,<3
